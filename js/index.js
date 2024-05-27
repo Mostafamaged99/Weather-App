@@ -8,14 +8,16 @@ const wrong = document.querySelector(".wrong");
 const btnOk = document.querySelector(".btnOk");
 const clearBtn = document.querySelector(".clearBtn");
 //! ===== VARIABLES ===== !\\
-let apiKey = "f89ea43879b54a12ace204337241901";
-let baseUrl = "http://api.weatherapi.com/v1/forecast.json";
+let apiKey = "90a9e7a616e1493c920155644242505";
+let baseUrl = "https://api.weatherapi.com/v1/forecast.json";
 let currentLocation = "cairo";
 let recentCities = JSON.parse(localStorage.getItem("cities")) || [];
 //! ===== FUNCTIONS ===== !\\
 
 async function getWeather(location) {
-  const response = await fetch(`${baseUrl}?key=${apiKey}&q=${location}&days=3`);
+  const linkApi = `${baseUrl}?key=${apiKey}&q=${location}&days=3`;
+  const response = await fetch(linkApi);
+  console.log(linkApi);
   const data = await response.json();
   if (response.status !== 200) return;
   displayWeather(data);
